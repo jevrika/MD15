@@ -1,0 +1,22 @@
+.wrapper{
+  margin:100px auto;
+}
+
+.heading{
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  padding:25px;
+  font-weight: 300;
+}
+
+.genreImage{
+  width: 200px;
+}
+
+.genreImageWrapper{
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  justify-content: center;
+  gap:50px;
+}

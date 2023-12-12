@@ -1,0 +1,68 @@
+.wrapper{
+  border:1px solid grey;
+  border-radius: 15px;
+  margin:100px auto;
+  max-width:400px;
+}
+
+.book{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding:50px;
+}
+
+.bookHeading {
+  margin:0;
+  padding:0;
+  height: 100%;
+  max-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.authorHeading{
+font-weight:400;
+}
+
+.genreHeading{
+font-weight: 400;
+}
+
+.yearHeading{
+font-weight: 300;
+}
+
+.deleteButton{
+width: 50%;
+background-color: #f7adad;
+border:none;
+border-radius: 25px;
+padding:15px 25px;
+cursor: pointer;
+opacity: 1;
+transition: opacity 0.25;
+font-size: 16px;
+
+&:hover {
+  opacity: 0.7;
+}
+} 
+
+.goBackButton{
+  width: 50%;
+  background-color: #c0ecfd;
+  border:none;
+  border-radius: 25px;
+  padding:15px 25px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.25;
+  font-size: 16px;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+}
