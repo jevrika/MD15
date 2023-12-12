@@ -2,7 +2,7 @@
     padding:50px;
     display: grid;
     grid-template-columns:250px 250px;
-    justify-content: flex-end;
+    justify-content: center;
     margin:0;
     gap:50px
   

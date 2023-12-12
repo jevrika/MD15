@@ -1,5 +1,4 @@
 .linkWrapper{
-  background-color: rgb(247, 247, 255);
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(3, 100px);

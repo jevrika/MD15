@@ -2,8 +2,8 @@
 
 const Home = () => {
   return (
-    <h1>Sākumlapa</h1>
-   );
+    <h1>dsfsdf</h1>
+  )
 }
  
 export default Home;
