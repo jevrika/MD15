@@ -10,7 +10,7 @@ import BookShowCard from './BookShowCard/BookShowCard';
 function App() {
   return (
     <BrowserRouter>
-    <Navbar />
+      <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/books' element={<><div className={styles.wrapper}><Form/> <BooksPreviewCards /></div></>}/>

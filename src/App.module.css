@@ -4,6 +4,7 @@
     display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
+    margin:0 auto;
   }
 }
 
@@ -11,5 +12,6 @@
   .wrapper{
     display: grid;
     grid-template-columns: 50% 50%;
+    margin:0 auto;
   }
 }

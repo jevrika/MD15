@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './BooksPreviewCards.module.css'
 import axios from 'axios'
 import BooksImage from '../BooksImage/BooksImage';
 import { useNavigate } from 'react-router-dom';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 type Book = {
   id: number;
@@ -14,23 +15,37 @@ type Book = {
 };
 
 const BooksPreviewCards = () => {
+  const queryClient = useQueryClient();
   const [bookData, setBookData] = useState<Book[]>([]);
   const navigate = useNavigate();
 
-  const getBooks = () => {
-    axios.get<Book[]>('http://localhost:3000/books').then((response) => {
-      setBookData(response.data.reverse())
-    })
+  const deleteBook = useMutation({
+    mutationFn: (bookId: number) => axios.delete(`http://localhost:3000/books/${bookId}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries();
+    },
+  });
+
+  const wait = (duration: number) => {
+    return new Promise(resolve => setTimeout(resolve, duration))
   }
 
-  useEffect(() => {
-    getBooks()
-  }, [])
+  const booksQuery = useQuery({
+    queryKey: ["books"],
+    queryFn: () => wait(5000).then(() =>
+      axios.get<Book[]>('http://localhost:3000/books').then((response) => {
+        setBookData(response.data.reverse());
+        return response.data;
+      })
+    ),
+  });
+
+  if (booksQuery.isLoading) {
+    return <h1 className={styles.loadingHeading}>Loading....</h1>;
+  }
 
   const handleDeleteBook = (bookId: number) => {
-    axios.delete(`http://localhost:3000/books/${bookId}`).then(() => {
-      getBooks()
-    })
+    deleteBook.mutate(bookId);
   }
 
 
