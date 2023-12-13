@@ -22,12 +22,24 @@ const Form = () => {
     createdAt: '',
   })
 
-  const newBookMutation = useMutation({
-    mutationFn: () => axios.post('http://localhost:3000/books', formData)
-  });
+  const handleSuccess = (formData) => {
+    console.log('OK', formData);
+ };
 
+  const newBookMutation = useMutation({
+    mutationFn: () =>
+      axios.post('http://localhost:3000/books', formData),
+    onSuccess: (formData) => {
+      handleSuccess(formData)
+    },
+    onError: (error) => {
+      console.error('error', error);
+    },
+  });
+  
   const handleFormSubmit = () => {
     newBookMutation.mutate()
+    handleSuccess(formData)
   }
 
 return (

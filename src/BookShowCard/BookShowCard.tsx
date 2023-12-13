@@ -14,7 +14,7 @@ type Book = {
   createdAt: string;
 };
 
-const BooksPreviewCards = () => {
+const BookShowCard = () => {
   const queryClient = useQueryClient();
   const { id } = useParams()
   const navigate = useNavigate();
@@ -70,4 +70,4 @@ const BooksPreviewCards = () => {
   );
 }
 
-export default BooksPreviewCards;
+export default BookShowCard;

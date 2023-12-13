@@ -32,7 +32,7 @@ const BooksPreviewCards = () => {
 
   const booksQuery = useQuery({
     queryKey: ["books"],
-    queryFn: () => wait(5000).then(() =>
+    queryFn: () => wait(1000).then(() =>
       axios.get<Book[]>('http://localhost:3000/books').then((response) => {
         setBookData(response.data.reverse());
         return response.data;
@@ -49,24 +49,22 @@ const BooksPreviewCards = () => {
   }
 
 
+
   return (
     <>
       <div className={styles.allBooksWrapper}>
         {
           bookData && bookData.map((book) => (
-            <div key={book.id} className={styles.wrapper}>
+            <div className={styles.book}>
 
-              <div className={styles.book}>
-
-                <div className={styles.genreImageWrapper}>
-                  <BooksImage genre={book.genre} />
-                </div>
-
-                <h1 className={styles.bookHeading}>{book.name}</h1>
-
-                <button className={styles.deleteButton} onClick={() => handleDeleteBook(book.id)}> Delete </button>
-                <button className={styles.openButton} onClick={() => navigate(`/books/${book.id}`)}> Open </button>
+              <div className={styles.genreImageWrapper}>
+                <BooksImage genre={book.genre} />
               </div>
+
+              <h1 className={styles.bookHeading}>{book.name}</h1>
+
+              <button className={styles.deleteButton} onClick={() => handleDeleteBook(book.id)}> Delete </button>
+              <button className={styles.openButton} onClick={() => navigate(`/books/${book.id}`)}> Open </button>
             </div>
           ))}
       </div>
