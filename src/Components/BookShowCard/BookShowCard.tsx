@@ -22,8 +22,8 @@ const BookShowCard = () => {
   });
 
   const booksQuery = useQuery({
-    queryKey: ["books"],
-    queryFn: () => axios.get<Book[]>(url).then((response) => response.data),
+    queryKey: ["books", id],
+    queryFn: () => axios.get<Book[]>(`${url}${id}`).then((response) => response.data),
   })
 
   if (booksQuery.isLoading) return <h1> Loading....</h1>

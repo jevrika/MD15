@@ -4,5 +4,5 @@ export type Book = {
   author: string;
   genre: string;
   year: number | string;
-  createdAt: string;
+
 };

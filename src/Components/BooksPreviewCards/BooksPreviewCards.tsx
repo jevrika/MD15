@@ -13,23 +13,29 @@ const BooksPreviewCards = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
+  const wait = (duration: number) => {
+    return new Promise(resolve => setTimeout(resolve, duration))
+  }
+
   const booksQuery = useQuery({
     queryKey: ["books"],
-    queryFn: () => axios.get<Book[]>(url).then((response) => (response.data.reverse()))
-  });
+    queryFn: () => wait(2000).then(() => axios.get<Book[]>(url)).then((response) => response.data.reverse())}
+  );
 
   const deleteBook = useMutation({
-    mutationFn: (bookId: number) => axios.delete(`http://localhost:3000/books/${bookId}`),
+    mutationFn: (bookId: number) => axios.delete(`${url}${bookId}`),
     onSuccess: () => {
       queryClient.invalidateQueries();
     },
   });
 
   const handleDeleteBook = (bookId: number) => {
-    deleteBook.mutate(bookId);
+    deleteBook.mutate(bookId)
   }
+
   if (booksQuery.isPending) {
-    return <h1 className={styles.loadingHeading}>Loading....</h1>;
+      return <h1 className={styles.loadingHeading}>Loading....</h1>;
+    
   }
 
   if (booksQuery.isError) {
@@ -48,8 +54,7 @@ const BooksPreviewCards = () => {
                 <BooksImage genre={book.genre} />
               </div>
 
-              <h1 className={styles.bookHeading}>{book.name}</h1>
-
+                <h1 className={styles.bookHeading}>{book.name}</h1>
 
                 <Button buttonText={'Delete'} className={'deleteButton'} buttonType={'button'} onClick={() => handleDeleteBook(book.id)}/>
                 <Button buttonText={'Open'} className={'openButton'} buttonType={'button'} onClick={() => navigate(`/books/${book.id}`)}/>

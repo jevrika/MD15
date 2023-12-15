@@ -15,19 +15,13 @@ const Form = () => {
     author: '',
     genre: '',
     year: '',
-    createdAt: '',
   })
-
-  // const newBookMutation = useMutation({
-  //   mutationFn: () =>
-  //     axios.post(url, formData).catch((errorData) => alert(`Name, author cannot contain numbers ${errorData.error}`)),
-  // })
   
   const newBookMutation = useMutation({
     mutationFn: () =>
       axios.post(url, formData),
       onError: (error) => {
-          alert(`Error: ${(error as any).response.data.error}`);}
+        alert((error as any).response.data.error.message)}
   })
 
   const handleFormSubmit = () => {
@@ -40,8 +34,8 @@ const Form = () => {
         <div className={styles.headingWrapper}>
           <h1 className={styles.formHeading}>Add new book!</h1>
         </div>
-        <input type="text" className={styles.formInput} name="book-name" placeholder="add book" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required />
-        <input type="text" className={styles.formInput} name="author-name" placeholder="add author" value={formData.author} onChange={(e) => setFormData({ ...formData, author: e.target.value })} required />
+        <input type="text" className={styles.formInput} name="book-name" placeholder="add book" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })}  />
+        <input type="text" className={styles.formInput} name="author-name" placeholder="add author" value={formData.author} onChange={(e) => setFormData({ ...formData, author: e.target.value })}  />
 
         <select required className={styles.genreSelect} name="book-genre" id="book-genre" value={formData.genre} onChange={(e) => setFormData({ ...formData, genre: e.target.value })} >
           <option value="choose a book genre">choose a book genre</option>
@@ -53,7 +47,7 @@ const Form = () => {
           <option value="History">History</option>
         </select>
 
-        <input type="number" min="1900" max="2060" className={styles.formInput} name="book-year" placeholder="add publishing year" value={formData.year} onChange={(e) => setFormData({ ...formData, year: e.target.value })} required />
+        <input type="number" min={1800} className={styles.formInput} name="book-year" placeholder="add publishing year" value={formData.year} onChange={(e) => setFormData({ ...formData, year: e.target.value })}  />
 
           <Button disabled={newBookMutation.isPending} buttonText={'Add Book!'} className={'addButton'} buttonType={'submit'} onClick={() => handleFormSubmit()}/>
 
