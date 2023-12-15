@@ -1,0 +1,38 @@
+.wrapper{
+  border:1px solid #cecece;
+  border-radius: 15px;
+  margin:25px auto;
+  max-width:300px;
+}
+
+.book{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding:30px;
+  justify-content: center;
+}
+
+.bookHeading {
+  margin:0;
+  padding:0;
+  height: 100%;
+  max-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.authorHeading{
+font-weight:400;
+}
+
+.genreHeading{
+font-weight: 400;
+}
+
+.yearHeading{
+font-weight: 300;
+}
+

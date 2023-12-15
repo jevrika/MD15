@@ -1,0 +1,40 @@
+
+@media only screen and (max-width: 1144px) {
+  .link{
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 400;
+    color:black
+  }
+    .linkWrapper{
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 70px);
+      justify-content: center;
+      list-style: none;
+      gap:20px;
+      padding:25px;
+    }
+  
+  
+}
+
+@media only screen and (min-width: 1145px) {
+  
+  .linkWrapper{
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    justify-content: center;
+    list-style: none;
+    gap:25px;
+    padding:25px;
+  }
+  .link{
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 400;
+    color:black
+  }
+  
+  }

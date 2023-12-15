@@ -1,11 +1,11 @@
 import styles from './App.module.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from '../Home/Home'
-import About from '../About/About';
-import Navbar from '../Navbar/Navbar'
-import Form from '../Form/Form'
-import BooksPreviewCards from '../BooksPreviewCards/BooksPreviewCards';
-import BookShowCard from '../BookShowCard/BookShowCard';
+import Home from '../Components/Home/Home'
+import About from '../Components/About/About';
+import Navbar from '../Components/Navbar/Navbar'
+import Form from '../Components/Form/Form'
+import BooksPreviewCards from '../Components/BooksPreviewCards/BooksPreviewCards';
+import BookShowCard from '../Components/BookShowCard/BookShowCard';
 
 function App() {
   return (
